@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="sale_chain_dashboard.FlowMap">
+        <div class="o_sale_chain_dashboard o_action h-100 d-flex flex-column">
+            <div class="o_scd_toolbar d-flex align-items-center flex-wrap gap-3 px-3 py-2 border-bottom bg-view">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="o_scd_title fw-bold">Flow Map</span>
+                    <span class="badge rounded-pill text-bg-secondary">sale.order</span>
+                    <span class="text-muted small" t-out="this.summaryText"/>
+                </div>
+                <div class="o_scd_partner_select flex-grow-1" style="max-width: 360px;">
+                    <RecordSelector
+                        resModel="'res.partner'"
+                        resId="this.state.partnerId"
+                        update.bind="this.onPartnerUpdate"
+                        placeholder.translate="Select a client..."
+                    />
+                </div>
+                <div class="o_scd_legend d-flex flex-wrap align-items-center gap-3 ms-auto">
+                    <t t-foreach="this.legendItems" t-as="item" t-key="item.key">
+                        <div class="d-flex align-items-center gap-1 small">
+                            <span class="o_scd_legend_swatch" t-att-style="'background:' + item.color"/>
+                            <span t-out="item.label"/>
+                            <span class="text-muted" t-out="item.count"/>
+                        </div>
+                    </t>
+                </div>
+            </div>
+
+            <div class="o_scd_body flex-grow-1 position-relative overflow-auto">
+                <t t-if="this.state.loading">
+                    <div class="o_scd_empty text-muted p-5 text-center">Loading chain...</div>
+                </t>
+                <t t-elif="!this.state.partnerId">
+                    <div class="o_scd_empty text-muted p-5 text-center">
+                        Select a client to view RFQ → Confirmed Quotation → Sales Order → Invoice (Paid / Not Paid).
+                    </div>
+                </t>
+                <t t-elif="!this.state.data.nodes.length">
+                    <div class="o_scd_empty text-muted p-5 text-center">
+                        No quotations, orders, or invoices found for this client.
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="o_scd_canvas position-relative" t-ref="this.canvasRef">
+                        <svg class="o_scd_svg" t-ref="this.svgRef"/>
+                        <div class="o_scd_columns d-flex">
+                            <t t-foreach="this.columns" t-as="col" t-key="col.key">
+                                <div class="o_scd_column">
+                                    <div class="o_scd_column_title text-uppercase text-muted small fw-bold mb-3"
+                                         t-out="col.label"/>
+                                    <div class="o_scd_column_nodes d-flex flex-column gap-2">
+                                        <t t-foreach="this.nodesByColumn[col.key]" t-as="node" t-key="node.id">
+                                            <button type="button"
+                                                    class="o_scd_node text-start"
+                                                    t-att-class="this.nodeClass(node)"
+                                                    t-att-data-node-id="node.id"
+                                                    t-on-click="() => this.openRecord(node)">
+                                                <div class="o_scd_node_top"/>
+                                                <div class="o_scd_node_body">
+                                                    <div class="o_scd_node_name text-truncate" t-out="node.name"/>
+                                                    <div class="o_scd_node_sub text-truncate" t-out="node.subtitle"/>
+                                                    <div t-if="this.formatAmount(node)"
+                                                         class="o_scd_node_amount text-truncate"
+                                                         t-out="this.formatAmount(node)"/>
+                                                </div>
+                                                <span class="o_scd_node_dot"/>
+                                            </button>
+                                        </t>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>

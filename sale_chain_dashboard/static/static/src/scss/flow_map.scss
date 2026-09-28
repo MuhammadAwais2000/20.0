@@ -1,0 +1,128 @@
+.o_sale_chain_dashboard {
+    background: #f7f8fa;
+
+    .o_scd_title {
+        font-size: 1.05rem;
+        letter-spacing: 0.01em;
+    }
+
+    .o_scd_legend_swatch {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+        display: inline-block;
+    }
+
+    .o_scd_body {
+        background-image: radial-gradient(#d7dbe3 1px, transparent 1px);
+        background-size: 18px 18px;
+        background-color: #f4f6f9;
+    }
+
+    .o_scd_canvas {
+        min-height: 100%;
+        padding: 1.25rem 1.5rem 2rem;
+    }
+
+    .o_scd_svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .o_scd_columns {
+        position: relative;
+        z-index: 2;
+        gap: 1.75rem;
+        min-width: max-content;
+    }
+
+    .o_scd_column {
+        width: 210px;
+        flex: 0 0 210px;
+    }
+
+    .o_scd_column_title {
+        letter-spacing: 0.06em;
+        font-size: 0.72rem;
+    }
+
+    .o_scd_node {
+        position: relative;
+        width: 100%;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+        padding: 0;
+        overflow: hidden;
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+
+        &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        }
+    }
+
+    .o_scd_node_top {
+        height: 6px;
+        width: 100%;
+    }
+
+    .o_scd_node_body {
+        padding: 0.55rem 0.75rem 0.65rem;
+    }
+
+    .o_scd_node_name {
+        font-weight: 650;
+        font-size: 0.86rem;
+        color: #0f172a;
+        line-height: 1.2;
+    }
+
+    .o_scd_node_sub,
+    .o_scd_node_amount {
+        font-size: 0.72rem;
+        color: #64748b;
+        margin-top: 0.15rem;
+    }
+
+    .o_scd_node_dot {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(15, 23, 42, 0.12);
+    }
+
+    .o_scd_type_partner {
+        background: linear-gradient(180deg, #eef2f6 0%, #fff 42%);
+        .o_scd_node_top { background: #5b6b7c; }
+    }
+    .o_scd_type_rfq {
+        background: linear-gradient(180deg, #dbeafe 0%, #fff 45%);
+        .o_scd_node_top { background: #3b82f6; }
+    }
+    .o_scd_type_confirmed {
+        background: linear-gradient(180deg, #e0f2fe 0%, #fff 45%);
+        .o_scd_node_top { background: #0ea5e9; }
+    }
+    .o_scd_type_sale {
+        background: linear-gradient(180deg, #dbeafe 0%, #fff 45%);
+        .o_scd_node_top { background: #2563eb; }
+    }
+    .o_scd_type_invoice_not_paid {
+        background: linear-gradient(180deg, #fef3c7 0%, #fff 45%);
+        .o_scd_node_top { background: #f59e0b; }
+    }
+    .o_scd_type_invoice_paid {
+        background: linear-gradient(180deg, #d1fae5 0%, #fff 45%);
+        .o_scd_node_top { background: #10b981; }
+    }
+}
