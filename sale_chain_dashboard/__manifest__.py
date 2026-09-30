@@ -1,6 +1,6 @@
 {
     "name": "Sale Chain Dashboard",
-    "version": "20.0.1.0.0",
+    "version": "20.0.1.0.1",
     "category": "Sales",
     "author": "Muhammad Awais",
     "summary": "Flow map of RFQ, quotation, sales order and invoices by payment status",
