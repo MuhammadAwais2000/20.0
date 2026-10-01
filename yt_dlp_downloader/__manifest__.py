@@ -1,6 +1,6 @@
 {
     "name": "URL Attachment Downloader",
-    "version": "20.1.1.1.2",
+    "version": "20.0.1.0.1",
     "category": "Productivity",
     "author": "Muhammad Awais",
     "summary": "Download media from a URL with yt-dlp and save it as an Odoo attachment",
