@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Root app menu: appears in Odoo home / Apps switcher -->
+    <menuitem
+        id="menu_yt_dlp_root"
+        name="URL Downloader"
+        action="action_yt_dlp_download"
+        web_icon="yt_dlp_downloader,static/description/icon.png"
+        groups="base.group_user"
+        sequence="65"
+    />
+
+    <!-- Nested menu under the app -->
+    <menuitem
+        id="menu_yt_dlp_download"
+        name="Downloads"
+        parent="menu_yt_dlp_root"
+        action="action_yt_dlp_download"
+        groups="base.group_user"
+        sequence="10"
+    />
+</odoo>

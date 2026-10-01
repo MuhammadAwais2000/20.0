@@ -1,0 +1,239 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#0f172a;">URL Attachment Downloader</h2>
+        <h3 class="oe_slogan" style="color:#64748b;">
+            Download media from YouTube and 1700+ sites, store it in Odoo, and play it instantly
+        </h3>
+        <div class="oe_demo oe_screenshot text-center">
+            <img src="banner.png" alt="Downloaded media with built-in player" style="max-width:100%;"/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Overview</h3>
+        <p class="text-center" style="max-width:860px;margin-left:auto;margin-right:auto;color:#334155;">
+            URL Attachment Downloader helps your team collect online media into Odoo in one click.
+            Paste a public media URL, download it with <b>yt-dlp</b>, store it as an Odoo attachment,
+            and preview/play it with the built-in OWL media player.
+        </p>
+        <p class="text-center" style="max-width:860px;margin-left:auto;margin-right:auto;margin-top:12px;color:#64748b;font-size:14px;">
+            <b>Note:</b> Requires <code>yt-dlp</code> and <code>ffmpeg</code> on the Odoo server.
+            See the Installation section below.
+        </p>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Key Features</h3>
+        <div class="row">
+            <div class="col-12 col-md-6" style="padding:12px 20px;">
+                <ul>
+                    <li><b>URL-based download</b> from YouTube and many other yt-dlp supported websites</li>
+                    <li><b>Format options</b>: Best video + audio, Video only, or Audio only</li>
+                    <li><b>Automatic title fill</b> from the source media metadata</li>
+                    <li><b>Built-in media player</b> (video/audio) on the form view</li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-6" style="padding:12px 20px;">
+                <ul>
+                    <li><b>Automatic attachment storage</b> in Odoo filestore</li>
+                    <li><b>Download tracking</b>: status, extractor, duration, file size, MIME type</li>
+                    <li><b>Error reporting</b> with clear messages when a URL is unsupported</li>
+                    <li><b>Chatter history</b> on every download record</li>
+                </ul>
+            </div>
+        </div>
+        <div class="oe_demo oe_screenshot text-center" style="margin-top:16px;">
+            <img src="features.png" alt="Format options and auto-filled title features" style="max-width:100%;"/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Supported Sources</h3>
+        <p class="text-center" style="max-width:860px;margin-left:auto;margin-right:auto;color:#334155;margin-bottom:8px;">
+            Works with public media URLs from popular platforms, powered by yt-dlp extractors.
+        </p>
+        <div class="row" style="max-width:920px;margin:0 auto;text-align:left;">
+            <div class="col-12 col-md-6" style="padding:8px 20px;">
+                <ul style="list-style:none;padding-left:0;margin:0;color:#334155;line-height:2.2;">
+                    <li>
+                        <span style="display:inline-flex;align-items:center;gap:8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
+                            YouTube / YouTube Shorts
+                        </span>
+                    </li>
+                    <li>
+                        <span style="display:inline-flex;align-items:center;gap:8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1AB7EA" d="M22.4 7.6c-.1 2.3-1.7 5.5-4.8 9.5C14.4 21.3 11.7 24 9.7 24c-1.2 0-2.3-1.1-3.2-3.4L4.3 13.2C3.6 10.9 2.8 9.7 2 9.7c-.2 0-.8.4-1.9 1.1L0 9.3C1.2 8.3 2.4 7.2 3.5 6.2 5.1 4.8 6.3 4.1 7.2 4.1c1.2 0 1.9.7 2.3 2.1.4 1.5.7 2.9.9 4.1.5 2 .9 3 1.3 3 .4 0 1-.6 1.9-1.7.9-1.2 1.4-2.1 1.5-2.7.1-1.1-.3-1.6-1.3-1.6-.5 0-.9.1-1.4.3 2.2-2.3 4.4-3.4 6.4-3.4 1.5.1 2.2 1 2.1 2.9z"/></svg>
+                            Vimeo
+                        </span>
+                    </li>
+                    <li>
+                        <span style="display:inline-flex;align-items:center;gap:8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#000000" d="M18.2 2H21.7l-7.5 8.6L23 22h-6.6l-5.2-6.8L5.3 22H1.8l8-9.2L1 2h6.8l4.7 6.2L18.2 2zm-1.2 18h1.9L7.1 3.9H5L17 20z"/></svg>
+                            Twitter / X
+                        </span>
+                    </li>
+                    <li>
+                        <span style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                            <span style="display:inline-flex;align-items:center;gap:6px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1877F2" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>
+                                Facebook
+                            </span>
+                            /
+                            <span style="display:inline-flex;align-items:center;gap:6px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#E4405F" d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9C2.4 3.9 4 2.4 7.1 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.8.1-2.3.1-3.3 1.1-3.4 3.4-.1 1.2-.1 1.6-.1 4.8s0 3.5.1 4.8c.1 2.2 1.1 3.3 3.4 3.4 1.2.1 1.6.1 4.8.1s3.5 0 4.8-.1c2.2-.1 3.3-1.1 3.4-3.4.1-1.2.1-1.6.1-4.8s0-3.5-.1-4.8c-.1-2.3-1.2-3.3-3.4-3.4-1.3-.1-1.6-.1-4.8-.1zm0 3.1a5 5 0 1 1 0 9.9 5 5 0 0 1 0-9.9zm0 1.8a3.2 3.2 0 1 0 0 6.3 3.2 3.2 0 0 0 0-6.3zm6.4-.9a1.2 1.2 0 1 1-2.3 0 1.2 1.2 0 0 1 2.3 0z"/></svg>
+                                Instagram
+                            </span>
+                            /
+                            <span style="display:inline-flex;align-items:center;gap:6px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#000000" d="M19.6 5.7a5.4 5.4 0 0 1-1.4-2.3h-3.1v14.2a3.2 3.2 0 1 1-2.2-3V11c3.6.2 6.7 2.3 6.7 6.6A6.6 6.6 0 0 1 6 17.6c0-3.6 2.6-6.6 6.1-7.1V2h5.1c.4 1.6 1.4 3 2.7 3.9l-.3-.2z"/></svg>
+                                TikTok
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-6" style="padding:8px 20px;">
+                <ul style="list-style:none;padding-left:0;margin:0;color:#334155;line-height:2.2;">
+                    <li>
+                        <span style="display:inline-flex;align-items:center;gap:8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF3300" d="M1.2 8.8c-.7 0-1.2.5-1.2 1.2v9.2a5.6 5.6 0 0 0 5.6 5.6h.2a5.6 5.6 0 0 0 5.5-4.8c.3-2 .4-4 .4-6V9.9h3.4c2.3 0 3.3 1.5 3.5 3.4v.2h3.4v-.3C21.8 8.6 19.3 6 15.1 6H9.5v10.4c0 1.4-.8 2.2-2 2.2s-2-.8-2-2.2v-6.4c0-.7-.5-1.2-1.2-1.2H1.2z"/></svg>
+                            SoundCloud
+                        </span>
+                    </li>
+                    <li>
+                        <span style="display:inline-flex;align-items:center;gap:8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#0066DC" d="M3.1 2.5A1.1 1.1 0 0 0 2 3.6v16.8c0 .6.5 1.1 1.1 1.1h17.8c.6 0 1.1-.5 1.1-1.1V3.6c0-.6-.5-1.1-1.1-1.1H3.1zm8.9 3.4c3.5 0 5.5 1.8 5.5 4.4 0 2.2-1.4 3.6-3.4 4l2.8 3.8h-2.7l-2.5-3.5h-.9v3.5H8.2V5.9h3.8zm0 1.8H9.9v3.7h1.9c1.6 0 2.5-.7 2.5-1.9 0-1.2-.9-1.8-2.3-1.8z"/></svg>
+                            Dailymotion
+                        </span>
+                    </li>
+                    <li>
+                        <span style="display:inline-flex;align-items:center;gap:8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#9146FF" d="M2.1 0L.6 3.9v16.2h5.5V24h3.1l2.9-3.9h4.5L23.4 12V0H2.1zm19.1 11.1l-3.1 3.9h-4.8l-2.9 3.9v-3.9H4.5V2.1h16.7v9zM15.5 6.1h2.1v6.2h-2.1V6.1zm-5.5 0H12v6.2H10V6.1z"/></svg>
+                            Twitch clips / VODs
+                        </span>
+                    </li>
+                    <li>
+                        <span style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                            <span style="display:inline-flex;align-items:center;gap:6px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#E62B1E" d="M0 7.7v8.6h6.4V24l7.7-7.7H24V7.7H0zm18.2 5.8h-3.2l-5.1 5.1v-5.1H4.5V9.9h13.7v3.6z"/></svg>
+                                TED
+                            </span>
+                            ,
+                            <span style="display:inline-flex;align-items:center;gap:6px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF4500" d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.8 13.6c.1 1.5-1.3 2.7-3.2 3.2-.8.2-1.5.2-2.3.1-.9-.1-1.7-.3-2.6-.7l.4 2.1c.1.6-.3 1.1-.9 1.2-.6.1-1.1-.3-1.2-.9l-1.1-5.3c-.1-.5.2-1 .7-1.2l5.3-1.8c.6-.2 1.2.1 1.4.7.2.6-.1 1.2-.7 1.4l-2.3.8c.5.2 1 .3 1.5.4.5.1.9.1 1.3 0 1-.3 1.4-.9 1.4-1.3 0-.1 0-.2-.1-.2-.1-.1-.3-.1-.8-.1-.7 0-1.7 0-2.6-.5-1-.5-1.6-1.4-1.5-2.5.1-1.5 1.4-2.7 3.3-3.1.8-.2 1.6-.2 2.4-.1.7.1 1.4.3 2.1.6l-.4-1.8c-.1-.6.3-1.1.9-1.2.6-.1 1.1.3 1.2.9l1.1 5.1c.1.6-.2 1.1-.8 1.3l-1.5.4z"/></svg>
+                                Reddit
+                            </span>
+                            ,
+                            <span style="display:inline-flex;align-items:center;gap:6px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1DA0C3" d="M0 18.8l10.5 1.8V3.8L0 5.7v13.1zm12 2.1L24 23V1L12 3.2v17.7z"/></svg>
+                                Bandcamp
+                            </span>
+                            , and many more
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center" style="max-width:860px;margin-left:auto;margin-right:auto;color:#64748b;margin-top:12px;">
+            Support depends on yt-dlp extractors and website availability. DRM-protected platforms
+            (for example Netflix / Disney+ / Amazon Prime) are not supported.
+        </p>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">How to Use</h3>
+        <ol style="max-width:860px;margin-left:auto;margin-right:auto;color:#334155;">
+            <li>Open <b>URL Downloader &rarr; Downloads</b>.</li>
+            <li>Click <b>New</b> and paste a public media URL.</li>
+            <li>Select a format (Best video + audio / Video only / Audio only).</li>
+            <li>Click <b>Download</b>.</li>
+            <li>When status is <b>Downloaded</b>, use the <b>Media Player</b> section to play the file.</li>
+        </ol>
+        <div class="oe_demo oe_screenshot text-center" style="margin-top:16px;">
+            <img src="howto.png" alt="How to paste URL and click Download" style="max-width:100%;"/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Installation &amp; Dependencies</h3>
+        <p class="text-center" style="max-width:860px;margin-left:auto;margin-right:auto;color:#334155;">
+            After installing this app from Odoo Apps, complete the server-side setup below.
+            These dependencies are required for downloads to work on your Odoo server.
+        </p>
+
+        <h4 class="text-center" style="margin-top:24px;color:#0f172a;">1) Odoo Apps Dependencies</h4>
+        <p class="text-center" style="color:#334155;">
+            Installed automatically: <code>base</code>, <code>mail</code>, <code>web</code>
+        </p>
+
+        <h4 class="text-center" style="margin-top:20px;color:#0f172a;">2) Required Python Package</h4>
+        <p class="text-center" style="color:#334155;">
+            Install <b>yt-dlp</b> on the same Python environment used by Odoo:
+        </p>
+        <pre style="max-width:860px;margin:12px auto;padding:14px;background:#0f172a;color:#e2e8f0;border-radius:8px;overflow:auto;">pip install -U yt-dlp
+
+# If your OS blocks system pip:
+pip3 install -U yt-dlp --break-system-packages</pre>
+
+        <h4 class="text-center" style="margin-top:20px;color:#0f172a;">3) Strongly Recommended System Package</h4>
+        <p class="text-center" style="color:#334155;">
+            Install <b>ffmpeg</b> to merge video + audio streams (needed for many YouTube downloads):
+        </p>
+        <pre style="max-width:860px;margin:12px auto;padding:14px;background:#0f172a;color:#e2e8f0;border-radius:8px;overflow:auto;"># Debian / Ubuntu
+sudo apt-get update
+sudo apt-get install -y ffmpeg</pre>
+
+        <h4 class="text-center" style="margin-top:20px;color:#0f172a;">4) Restart Odoo</h4>
+        <p class="text-center" style="color:#334155;">
+            Restart your Odoo service after installing the packages, then open
+            <b>URL Downloader &rarr; Downloads</b>.
+        </p>
+
+        <h4 class="text-center" style="margin-top:20px;color:#0f172a;">Docker Example</h4>
+        <pre style="max-width:860px;margin:12px auto;padding:14px;background:#0f172a;color:#e2e8f0;border-radius:8px;overflow:auto;">docker exec -u root YOUR_ODOO_CONTAINER pip3 install -U yt-dlp --break-system-packages
+docker exec -u root YOUR_ODOO_CONTAINER apt-get update
+docker exec -u root YOUR_ODOO_CONTAINER apt-get install -y ffmpeg
+docker restart YOUR_ODOO_CONTAINER</pre>
+
+        <h4 class="text-center" style="margin-top:24px;color:#0f172a;">Technical Notes</h4>
+        <ul style="max-width:860px;margin-left:auto;margin-right:auto;color:#334155;">
+            <li>Files are stored as standard Odoo attachments (<code>ir.attachment</code>).</li>
+            <li>External Python dependency: <code>yt_dlp</code>.</li>
+            <li>Recommended system dependency: <code>ffmpeg</code>.</li>
+            <li>License: LGPL-3.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Important Legal Notice</h3>
+        <p class="text-center" style="max-width:860px;margin-left:auto;margin-right:auto;color:#334155;">
+            Only download media you own or are authorized to use.
+            Respect website terms of service and copyright laws in your country.
+            The author is not responsible for misuse of this module.
+        </p>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Support</h3>
+        <p class="text-center" style="color:#334155;">
+            Need help with installation or configuration?
+            Contact us at
+            <a href="mailto:engrmuhammadawais2000@gmail.com">engrmuhammadawais2000@gmail.com</a>.
+        </p>
+    </div>
+</section>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="yt_dlp_downloader.MediaPlayer">
+        <div class="o_yt_dlp_media_player w-100">
+            <t t-if="this.canPlay">
+                <div class="o_yt_dlp_player_frame rounded-3 overflow-hidden border bg-dark">
+                    <t t-if="this.isVideo">
+                        <video class="o_yt_dlp_video w-100"
+                               controls="controls"
+                               preload="metadata"
+                               playsinline="playsinline"
+                               t-key="this.attachmentId">
+                            <source t-att-src="this.mediaUrl" t-att-type="this.mimetype"/>
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </t>
+                    <t t-else="">
+                        <div class="o_yt_dlp_audio_wrap p-4 text-center text-white">
+                            <div class="fw-semibold mb-3" t-out="this.title"/>
+                            <audio class="o_yt_dlp_audio w-100"
+                                   controls="controls"
+                                   preload="metadata"
+                                   t-key="this.attachmentId">
+                                <source t-att-src="this.mediaUrl" t-att-type="this.mimetype"/>
+                                Your browser does not support HTML5 audio.
+                            </audio>
+                        </div>
+                    </t>
+                </div>
+                <div class="text-muted small mt-2">
+                    Playing from attachment #<t t-out="this.attachmentId"/>
+                    <t t-if="this.mimetype"> — <t t-out="this.mimetype"/></t>
+                    <t t-if="this.fileSize"> — <t t-out="this.fileSizeLabel"/></t>
+                </div>
+            </t>
+            <t t-elif="this.attachmentId and !this.hasFile">
+                <div class="alert alert-danger mb-0">
+                    Attachment exists but has no stored file content.
+                    Please click <b>Re-download</b> to fetch the media again.
+                </div>
+            </t>
+            <t t-elif="this.attachmentId">
+                <div class="alert alert-warning mb-0">
+                    This file type (<t t-out="this.mimetype or 'unknown'"/>) cannot be played in the browser.
+                    Open the attachment to download it.
+                </div>
+            </t>
+            <t t-else="">
+                <div class="alert alert-light border mb-0 text-muted">
+                    Download a media file to preview and play it here.
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

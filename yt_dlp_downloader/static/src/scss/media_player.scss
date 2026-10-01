@@ -1,0 +1,25 @@
+.o_yt_dlp_media_player {
+    .o_yt_dlp_player_frame {
+        background: #0f172a;
+        max-width: 960px;
+    }
+
+    .o_yt_dlp_video {
+        display: block;
+        max-height: 520px;
+        background: #000;
+    }
+
+    .o_yt_dlp_audio_wrap {
+        background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .o_yt_dlp_audio {
+        max-width: 640px;
+        margin: 0 auto;
+    }
+}
