@@ -1,6 +1,6 @@
 {
     "name": "Sign & Stamp",
-    "version": "20.1.1.0.14",
+    "version": "20.0.1.0.1",
     "category": "Productivity",
     "author": "Muhammad Awais",
     "summary": "Upload a PDF, draw or upload a signature, add stamps, dates and text, then seal the document",
