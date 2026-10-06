@@ -1,0 +1,2 @@
+id,name,model_id,group_id/id,operation,domain
+access_sign_stamp_document_user,sign.stamp.document.user,sign.stamp.document,base.group_user,crud,
