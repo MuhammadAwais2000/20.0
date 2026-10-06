@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem
+        id="menu_sign_stamp_root"
+        name="Sign &amp; Stamp"
+        action="action_sign_stamp_document"
+        web_icon="sign_stamp,static/description/icon.png"
+        groups="base.group_user"
+        sequence="55"
+    />
+
+    <menuitem
+        id="menu_sign_stamp_documents"
+        name="Documents"
+        parent="menu_sign_stamp_root"
+        action="action_sign_stamp_document"
+        groups="base.group_user"
+        sequence="10"
+    />
+</odoo>

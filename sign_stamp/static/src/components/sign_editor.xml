@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="sign_stamp.Editor">
+        <div class="o_sign_stamp_editor" t-att-class="{'o_ss_readonly': !this.canEdit}">
+            <header class="o_ss_topbar">
+                <div class="o_ss_topbar_left">
+                    <button class="o_ss_btn o_ss_btn_ghost" t-on-click="this.onBack">← Back</button>
+                    <div class="o_ss_title_wrap">
+                        <h1 class="o_ss_title" t-out="this.editor.name"/>
+                        <span class="o_ss_badge"
+                              t-att-class="this.editor.docState === 'done' ? 'is-done' : 'is-draft'"
+                              t-out="this.editor.docState === 'done' ? 'Sealed' : 'Draft'"/>
+                        <span class="o_ss_mode" t-out="this.editor.modeLabel"/>
+                    </div>
+                </div>
+                <div class="o_ss_topbar_right">
+                    <t t-if="this.canEdit">
+                        <button class="o_ss_btn o_ss_btn_ghost" t-on-click="this.onReset" t-att-disabled="!this.editor.overlays.length">Reset</button>
+                        <button class="o_ss_btn o_ss_btn_primary" t-on-click="this.onApplySave" t-att-disabled="this.editor.saving">
+                            <t t-if="this.editor.saving">Saving…</t>
+                            <t t-else="">Apply &amp; Save</t>
+                        </button>
+                    </t>
+                    <t t-else="">
+                        <span class="o_ss_sealed_hint">Read-only sealed preview</span>
+                    </t>
+                </div>
+            </header>
+
+            <div class="o_ss_body">
+                <aside class="o_ss_sidebar">
+                    <t t-if="this.canEdit">
+                        <h2 class="o_ss_section_title">Place on document</h2>
+
+                        <button class="o_ss_tool" t-att-class="this.editor.tool === 'signature' ? 'is-active' : ''" t-on-click="() => this.setTool('signature')">
+                            <span class="o_ss_tool_icon">✎</span>
+                            <span>Add signature</span>
+                        </button>
+                        <button class="o_ss_tool" t-att-class="this.editor.tool === 'stamp' ? 'is-active' : ''" t-on-click="() => this.setTool('stamp')">
+                            <span class="o_ss_tool_icon">◍</span>
+                            <span>Add stamp</span>
+                        </button>
+                        <button class="o_ss_tool" t-att-class="this.editor.tool === 'date' ? 'is-active' : ''" t-on-click="() => this.setTool('date')">
+                            <span class="o_ss_tool_icon">◷</span>
+                            <span>Add date</span>
+                        </button>
+                        <button class="o_ss_tool" t-att-class="this.editor.tool === 'text' ? 'is-active' : ''" t-on-click="() => this.setTool('text')">
+                            <span class="o_ss_tool_icon">T</span>
+                            <span>Add text</span>
+                        </button>
+
+                        <div class="o_ss_panel" t-if="this.editor.tool === 'signature'">
+                            <label class="o_ss_label">Signature name</label>
+                            <input class="o_ss_input" type="text" t-att-value="this.editor.signerName" t-on-input="this.onSignerNameInput"/>
+
+                            <div class="o_ss_tabs">
+                                <button t-att-class="this.editor.sigMode === 'draw' ? 'is-active' : ''" t-on-click="() => this.setSigMode('draw')">Draw</button>
+                                <button t-att-class="this.editor.sigMode === 'upload' ? 'is-active' : ''" t-on-click="() => this.setSigMode('upload')">Upload</button>
+                            </div>
+
+                            <t t-if="this.editor.sigMode === 'draw'">
+                                <div class="o_ss_pad_wrap">
+                                    <canvas class="o_ss_pad" t-ref="this.sigPadRef" width="280" height="120"
+                                        t-on-pointerdown="this.onPadPointerDown"
+                                        t-on-pointermove="this.onPadPointerMove"
+                                        t-on-pointerup="this.onPadPointerUp"
+                                        t-on-pointerleave="this.onPadPointerUp"/>
+                                </div>
+                                <div class="o_ss_row">
+                                    <button class="o_ss_btn o_ss_btn_ghost o_ss_btn_sm" t-on-click="this.clearPad">Clear</button>
+                                    <button class="o_ss_btn o_ss_btn_accent o_ss_btn_sm" t-on-click="this.useDrawnSignature">Use drawing</button>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <label class="o_ss_file">
+                                    <input type="file" accept="image/*" t-on-change="this.onSignatureUpload"/>
+                                    <span>Choose signature image</span>
+                                </label>
+                            </t>
+
+                            <div class="o_ss_preview" t-if="this.editor.signatureDataUrl">
+                                <img t-att-src="this.editor.signatureDataUrl" alt="Signature preview"/>
+                                <small>Click the PDF to place, then drag / resize</small>
+                            </div>
+                        </div>
+
+                        <div class="o_ss_panel" t-if="this.editor.tool === 'stamp'">
+                            <label class="o_ss_label">Company stamp</label>
+                            <label class="o_ss_file">
+                                <input type="file" accept="image/*" t-on-change="this.onStampUpload"/>
+                                <span>Upload stamp image</span>
+                            </label>
+                            <div class="o_ss_preview" t-if="this.editor.stampDataUrl">
+                                <img t-att-src="this.editor.stampDataUrl" alt="Stamp preview"/>
+                                <small>Click the PDF to place, then drag / resize</small>
+                            </div>
+                        </div>
+
+                        <div class="o_ss_panel" t-if="this.editor.tool === 'date'">
+                            <label class="o_ss_label">Date text</label>
+                            <input class="o_ss_input" type="text" t-att-value="this.editor.dateText" t-on-input="this.onDateTextInput"/>
+                            <div class="o_ss_style_row">
+                                <label class="o_ss_label">Color</label>
+                                <input class="o_ss_color" type="color" t-att-value="this.editor.textColor" t-on-input="this.onTextColorInput"/>
+                                <label class="o_ss_label">Size</label>
+                                <select class="o_ss_input o_ss_select" t-att-value="this.editor.textFontSize" t-on-change="this.onTextFontSizeInput">
+                                    <t t-foreach="this.fontSizeOptions" t-as="size" t-key="size">
+                                        <option t-att-value="size" t-out="size + ' px'"/>
+                                    </t>
+                                </select>
+                            </div>
+                            <small class="o_ss_hint">Click the PDF to place the date. Color/size are saved with the overlay.</small>
+                        </div>
+
+                        <div class="o_ss_panel" t-if="this.editor.tool === 'text'">
+                            <label class="o_ss_label">Custom text</label>
+                            <textarea class="o_ss_input o_ss_textarea"
+                                      rows="4"
+                                      t-att-value="this.editor.customText"
+                                      t-on-input="this.onCustomTextInput"
+                                      placeholder="Type text to place on the document"/>
+                            <div class="o_ss_style_row">
+                                <label class="o_ss_label">Color</label>
+                                <input class="o_ss_color" type="color" t-att-value="this.editor.textColor" t-on-input="this.onTextColorInput"/>
+                                <label class="o_ss_label">Size</label>
+                                <select class="o_ss_input o_ss_select" t-att-value="this.editor.textFontSize" t-on-change="this.onTextFontSizeInput">
+                                    <t t-foreach="this.fontSizeOptions" t-as="size" t-key="size">
+                                        <option t-att-value="size" t-out="size + ' px'"/>
+                                    </t>
+                                </select>
+                            </div>
+                            <small class="o_ss_hint">Click the PDF to place the text. Color/size persist on reopen.</small>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <h2 class="o_ss_section_title">Sealed document</h2>
+                        <div class="o_ss_panel o_ss_sealed_panel">
+                            <p>This document is sealed.</p>
+                            <p>Signatures, stamps, dates and text are already applied on the PDF preview.</p>
+                            <p class="o_ss_hint">Use <b>Reset to Draft</b> on the form if you need to edit again.</p>
+                        </div>
+                    </t>
+
+                    <div class="o_ss_meta">
+                        <div><span>Authorized signer</span><strong t-out="this.editor.signerName"/></div>
+                        <div t-if="this.canEdit"><span>Overlays</span><strong t-out="this.editor.overlays.length"/></div>
+                        <div><span>Mode</span><strong t-out="this.editor.modeLabel"/></div>
+                    </div>
+                </aside>
+
+                <main class="o_ss_workspace">
+                    <div class="o_ss_preview_bar">
+                        <span t-out="this.editor.isSealed ? 'Sealed PDF preview' : 'PDF preview'"/>
+                        <div class="o_ss_page_nav">
+                            <button class="o_ss_btn o_ss_btn_ghost o_ss_btn_sm" t-on-click="this.prevPage" t-att-disabled="this.editor.page &lt;= 1">Prev</button>
+                            <span>Page <t t-out="this.editor.page"/> of <t t-out="this.editor.pageCount || 1"/></span>
+                            <button class="o_ss_btn o_ss_btn_ghost o_ss_btn_sm" t-on-click="this.nextPage" t-att-disabled="this.editor.page &gt;= this.editor.pageCount">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="o_ss_canvas_scroll" t-ref="this.scrollAreaRef">
+                        <div t-if="this.editor.loading" class="o_ss_loading">Loading PDF…</div>
+                        <div t-elif="this.editor.error" class="o_ss_error" t-out="this.editor.error"/>
+                        <div class="o_ss_page_stage"
+                             t-att-class="{
+                                'o_ss_hidden': this.editor.loading || this.editor.error,
+                                'o_ss_stage_readonly': !this.canEdit,
+                             }"
+                             t-ref="this.stageRef"
+                             t-att-style="this.stageStyle"
+                             t-on-click="this.onStageClick">
+                            <canvas class="o_ss_pdf_canvas" t-ref="this.pdfCanvasRef"/>
+                            <t t-foreach="this.pageOverlays" t-as="item" t-key="item.id">
+                                <div class="o_ss_overlay"
+                                     t-att-class="this.editor.selectedId === item.id ? 'is-selected' : ''"
+                                     t-att-style="this.overlayStyle(item)"
+                                     t-on-pointerdown="(ev) => this.onOverlayPointerDown(ev, item)"
+                                     t-on-click.stop="() => this.selectOverlay(item.id)">
+                                    <t t-if="item.type === 'date' || item.type === 'text'">
+                                        <span t-att-class="item.type === 'text' ? 'o_ss_text_label' : 'o_ss_date_label'"
+                                              t-att-style="this.textLabelStyle(item)"
+                                              t-out="item.text"/>
+                                    </t>
+                                    <t t-else="">
+                                        <img t-att-src="item.data_url" alt=""/>
+                                    </t>
+                                    <span class="o_ss_handle o_ss_handle_br"
+                                          t-on-pointerdown.stop="(ev) => this.onResizePointerDown(ev, item)"/>
+                                    <button class="o_ss_remove" t-on-click.stop="() => this.removeOverlay(item.id)">×</button>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                    <div class="o_ss_footer_hint">
+                        <t t-if="this.canEdit">
+                            Tip: choose a tool, prepare signature/stamp/text, then click the page. Drag to move, corner handle to resize.
+                        </t>
+                        <t t-else="">
+                            You are viewing the sealed PDF. Marks are permanently applied to this file.
+                        </t>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </t>
+</templates>

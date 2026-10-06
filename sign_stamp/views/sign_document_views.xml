@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_sign_stamp_document_list" model="ir.ui.view">
+        <field name="name">sign.stamp.document.list</field>
+        <field name="model">sign.stamp.document</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="pdf_filename"/>
+                <field name="signer_name"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'done'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sign_stamp_document_form" model="ir.ui.view">
+        <field name="name">sign.stamp.document.form</field>
+        <field name="model">sign.stamp.document</field>
+        <field name="arch" type="xml">
+            <form string="Sign &amp; Stamp Document">
+                <header>
+                    <button name="action_open_editor" type="object" string="Open Editor" class="btn-primary" invisible="not pdf and not result_attachment_id"/>
+                    <button name="action_open_result" type="object" string="Download Sealed PDF" invisible="state != 'done'"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state != 'done'" confirm="Reset this document to Draft so you can place new signatures/stamps on the original PDF?"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Document title"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Source PDF">
+                            <field name="pdf" filename="pdf_filename" widget="binary"/>
+                            <field name="pdf_filename" invisible="1"/>
+                            <field name="source_attachment_id" readonly="1"/>
+                        </group>
+                        <group string="Details">
+                            <field name="signer_name"/>
+                            <field name="result_attachment_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note" placeholder="Optional notes..."/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sign_stamp_document" model="ir.actions.act_window">
+        <field name="name">Documents</field>
+        <field name="res_model">sign.stamp.document</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Upload a PDF and open the editor to sign &amp; stamp it.
+            </p>
+        </field>
+    </record>
+</odoo>
