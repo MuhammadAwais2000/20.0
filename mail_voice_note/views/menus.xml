@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_mail_voice_note_settings" model="ir.actions.act_url">
+        <field name="name">Voice Note Settings</field>
+        <field name="url">/odoo/settings#mail_voice_note_duration_setting</field>
+        <field name="target">self</field>
+    </record>
+
+    <!-- App root — visible in the main app menu -->
+    <menuitem
+        id="menu_mail_voice_note_root"
+        name="Voice Notes"
+        action="mail.action_discuss"
+        web_icon="mail_voice_note,static/description/icon.png"
+        groups="mail_voice_note.group_mail_voice_note"
+        sequence="58"
+    />
+
+    <menuitem
+        id="menu_mail_voice_note_discuss"
+        name="Discuss"
+        parent="menu_mail_voice_note_root"
+        action="mail.action_discuss"
+        groups="mail_voice_note.group_mail_voice_note"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_mail_voice_note_configuration"
+        name="Configuration"
+        parent="menu_mail_voice_note_root"
+        groups="base.group_system"
+        sequence="90"
+    />
+
+    <menuitem
+        id="menu_mail_voice_note_settings"
+        name="Settings"
+        parent="menu_mail_voice_note_configuration"
+        action="action_mail_voice_note_settings"
+        groups="base.group_system"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_mail_voice_note_discuss_settings"
+        name="Voice Notes"
+        parent="mail.menu_configuration"
+        action="action_mail_voice_note_settings"
+        groups="base.group_system"
+        sequence="5"
+    />
+</odoo>

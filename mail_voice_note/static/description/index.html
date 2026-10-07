@@ -1,0 +1,131 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#0f172a;">Voice Notes in Chatter</h2>
+        <h3 class="oe_slogan" style="color:#64748b;">
+            Record and share audio notes on any record — no external libraries required
+        </h3>
+        <div class="oe_demo oe_screenshot">
+            <img src="banner.png" alt="Voice Notes in Chatter"/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Overview</h3>
+        <p class="text-center" style="max-width:900px;margin:0 auto;line-height:1.6;">
+            Voice Notes in Chatter lets users record short audio messages directly in Odoo chatter
+            and Discuss. It reuses Odoo’s native voice stack (microphone, MP3 encoding and the
+            built-in voice player) so you do not need extra Python or npm packages.
+        </p>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">How the recorder works</h3>
+        <p class="text-center" style="max-width:900px;margin:0 auto 24px;line-height:1.6;color:#475569;">
+            A quick visual guide so users can refer to the mic button, the recording UI, and the duration setting.
+        </p>
+
+        <div style="max-width:960px;margin:0 auto 40px;">
+            <h4 style="color:#0f172a;margin-bottom:8px;">1. Click the microphone to record</h4>
+            <p style="line-height:1.6;color:#475569;margin-bottom:12px;">
+                On any form with chatter, the microphone appears next to
+                <b>Send message</b>, <b>Log note</b> and <b>Activity</b>.
+                Click it to start an audio note (opens as an internal log note).
+            </p>
+            <div class="oe_demo oe_screenshot">
+                <img src="screenshot_chatter_mic.png"
+                     alt="Microphone button next to Activity in chatter"
+                     style="max-width:100%;border:1px solid #e2e8f0;border-radius:8px;"/>
+            </div>
+        </div>
+
+        <div style="max-width:960px;margin:0 auto 40px;">
+            <h4 style="color:#0f172a;margin-bottom:8px;">2. How it looks while recording</h4>
+            <p style="line-height:1.6;color:#475569;margin-bottom:12px;">
+                While recording you see a live timer, a small waveform, a cancel (X) control and a
+                confirm (✓) control in the Log note composer. Confirm to attach the audio; then
+                add an optional caption (if enabled) and click <b>Log</b>. Posted notes appear
+                with the built-in voice player in the chatter history.
+            </p>
+            <div class="oe_demo oe_screenshot">
+                <img src="screenshot_recording.png"
+                     alt="Voice recorder UI while recording in Log note"
+                     style="max-width:100%;border:1px solid #e2e8f0;border-radius:8px;"/>
+            </div>
+        </div>
+
+        <div style="max-width:960px;margin:0 auto 16px;">
+            <h4 style="color:#0f172a;margin-bottom:8px;">3. Configuration — set the limit</h4>
+            <p style="line-height:1.6;color:#475569;margin-bottom:12px;">
+                Go to <b>Settings → General Settings → Discuss</b>. Under
+                <b>Voice Note Duration</b>, set <b>Max seconds</b> (5–60).
+                Optionally enable or disable <b>Allow Audio Captions</b>
+                (when captions are off, the note is sent as soon as recording stops).
+            </p>
+            <div class="oe_demo oe_screenshot">
+                <img src="screenshot_settings_limit.png"
+                     alt="Settings Discuss Voice Note Duration max seconds"
+                     style="max-width:100%;border:1px solid #e2e8f0;border-radius:8px;"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Features</h3>
+        <div class="row" style="max-width:960px;margin:0 auto;">
+            <div class="col-md-6" style="padding:12px 20px;">
+                <h4>Record in any chatter</h4>
+                <p>Use the microphone action on CRM, Contacts, Invoicing, Project, custom models — everywhere chatter is available.</p>
+            </div>
+            <div class="col-md-6" style="padding:12px 20px;">
+                <h4>Preview before send</h4>
+                <p>Listen to the recording with the native voice player, then send or discard the attachment.</p>
+            </div>
+            <div class="col-md-6" style="padding:12px 20px;">
+                <h4>Optional captions</h4>
+                <p>Admins can allow text captions next to the audio, or auto-send as soon as recording stops.</p>
+            </div>
+            <div class="col-md-6" style="padding:12px 20px;">
+                <h4>Duration limit</h4>
+                <p>Configure a maximum recording length (5–60 seconds) under Settings → Discuss.</p>
+            </div>
+            <div class="col-md-6" style="padding:12px 20px;">
+                <h4>Group-based access</h4>
+                <p>Only users with the <b>Record Voice Notes</b> right see the microphone action.</p>
+            </div>
+            <div class="col-md-6" style="padding:12px 20px;">
+                <h4>Download anytime</h4>
+                <p>Voice notes are stored as standard attachments and can be downloaded from the chatter.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">How to use</h3>
+        <ol style="max-width:720px;margin:0 auto;line-height:1.7;">
+            <li>Install <b>Voice Notes in Chatter</b> (depends on Discuss).</li>
+            <li>Optional: set max duration and caption behaviour in <b>Settings → Discuss</b>.</li>
+            <li>Open any form with chatter and click the <b>microphone</b> next to Activity.</li>
+            <li>Speak, confirm the recording, add a caption if allowed, then click <b>Log</b>.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Technical notes</h3>
+        <ul style="max-width:720px;margin:0 auto;line-height:1.7;">
+            <li>Compatible with Odoo 20 Community and Enterprise (on-premise / Odoo.sh).</li>
+            <li>No external Python or JavaScript dependencies beyond standard Odoo.</li>
+            <li>Uses the browser microphone API and Odoo’s built-in voice message player.</li>
+            <li>Technical name: <code>mail_voice_note</code></li>
+        </ul>
+    </div>
+</section>
