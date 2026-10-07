@@ -1,6 +1,6 @@
 {
     "name": "Voice Notes in Chatter",
-    "version": "20.1.1.0.0",
+    "version": "20.0.1.0.1",
     "category": "Productivity",
     "author": "Muhammad Awais",
     "summary": "Record and share voice notes in any Odoo chatter with preview, captions and duration limits",
