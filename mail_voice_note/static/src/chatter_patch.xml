@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('o-mail-Chatter-activity')]" position="after">
+            <button t-if="this.canRecordVoiceNote"
+                    class="o-mail-Chatter-voiceNote btn btn-secondary text-nowrap px-2"
+                    t-att-disabled="!this.state.thread.canPostMessage and this.thread().id"
+                    t-att-title="this.voiceNoteButtonTitle"
+                    aria-label="Voice Note"
+                    data-hotkey="shift+v"
+                    t-on-click="this.onClickVoiceNote">
+                <i class="oi oi-fw" data-icon="mic" role="img"/>
+            </button>
+        </xpath>
+    </t>
+
+</templates>

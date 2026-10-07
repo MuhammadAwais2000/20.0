@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_mail_voice_note" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.mail.voice.note</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="mail.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='discuss']" position="inside">
+                <setting id="mail_voice_note_duration_setting"
+                         string="Voice Note Duration"
+                         help="Limit how long users can record voice notes in chatter (5–60 seconds).">
+                    <div class="content-group">
+                        <div class="row mt16">
+                            <label for="mail_voice_note_max_duration" string="Max seconds" class="col-lg-3 o_light_label"/>
+                            <field name="mail_voice_note_max_duration"/>
+                        </div>
+                    </div>
+                </setting>
+                <setting id="mail_voice_note_caption_setting"
+                         string="Allow Audio Captions"
+                         help="Let users add an optional text caption with the voice note. If disabled, the note is sent as soon as recording stops.">
+                    <field name="mail_voice_note_allow_caption"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
